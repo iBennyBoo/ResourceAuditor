@@ -9,7 +9,7 @@ In the current digital landscape, the Privacy Divide is widening by the day. Mos
 This was my first time using corsproxy.io, so it took me a while to get a grasp on it. Browser security naturally prevents JavaScript from reading headers of other websites. To solve this, I implemented a CORS Proxy integration. This allows the application to remain entirely front-end, while still providing the dynamic functionality of a back-end scanner.
 
 ### How to Run Locally
-1.) Clone the repository: git clone https://github.com/your-username/security-auditor.git
-2.) Open the folder in VS Code.
-3.) Open with Live Server.
-4.) Enter a domain to begin the scan.
+1.) Clone the repository: git clone https://github.com/your-username/security-auditor.git<br>
+2.) Open the folder in VS Code.<br>
+3.) Open with Live Server.<br>
+4.) Enter a domain to begin the scan.<br>
