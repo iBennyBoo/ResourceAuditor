@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Security Auditor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="auditor-container">
+    <div class="progress-container">
+        <div class="progress-bar" id="progress"></div>
+    </div>
+
+    <div class="step active" id="step-1">
+        <h2>Target Resource</h2>
+        <p>Enter the URL or system ID you wish to audit.</p>
+        <input type="text" id="url-input" placeholder="https://example.com" autocomplete="off">
+        <small id="error-msg" class="error"></small>
+        <div class="btn-group">
+            <button class="btn-next" onclick="validateStep1()">Next: Security Checks</button>
+        </div>
+    </div>
+
+    <div class="step" id="step-2">
+        <h2>Security Checklist</h2>
+        <p>Manual verification of known parameters:</p>
+        <div class="checklist">
+            <label><input type="checkbox" id="check-ssl"> SSL Certificate Active</label>
+            <label><input type="checkbox" id="check-auth"> Requires Multi-Factor Auth</label>
+            <label><input type="checkbox" id="check-encryption"> Data Encryption at Rest</label>
+        </div>
+        <div class="btn-group">
+            <button class="btn-back" onclick="goToStep(1)">Back</button>
+            <button class="btn-next" onclick="runAudit()">Generate Report</button>
+        </div>
+    </div>
+
+    <div class="step" id="step-3">
+        <h2>Audit Report</h2>
+        <div id="report-output">
+            </div>
+        <div class="btn-group">
+            <button class="btn-next" onclick="resetForm()">Start New Audit</button>
+        </div>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
