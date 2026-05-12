@@ -6,17 +6,13 @@ function goToStep(step) {
     document.getElementById('progress').style.width = (step / 3) * 100 + '%';
 }
 
-/**
- * Clean and Format the URL
- * This ensures the proxy gets exactly what it needs.
- */
 function formatURL(input) {
     let url = input.trim().toLowerCase();
     
     // Remove any existing protocol to start from a clean slate
     url = url.replace(/^(https?:\/\/)/, "");
     
-    // Check if it's a valid domain structure (has at least one dot)
+    // Check if it's a valid domain structure
     if (!url.includes('.') || url.length < 4) return null;
 
     // Standardize to HTTPS for the audit
@@ -51,7 +47,6 @@ async function runLiveScan() {
         consoleLog.scrollTop = consoleLog.scrollHeight;
     };
 
-    // We use corsproxy.io as it handles encoded URLs very reliably
     const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(auditData.url)}`;
 
     log(`Target Confirmed: ${auditData.url}`);
@@ -70,8 +65,7 @@ async function runLiveScan() {
         const text = await response.text();
         log("Headers captured. Analyzing security metadata...");
         
-        // Deep dive into the HTML/Header content
-        const lowerText = text.toLowerCase();
+       const lowerText = text.toLowerCase();
         
         const checks = [
             { 
@@ -133,6 +127,7 @@ function compileReport() {
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
+//Reset the form and go back to step 1
 function resetForm() {
     document.getElementById('url-input').value = "";
     document.getElementById('risk-badge').innerHTML = "";
